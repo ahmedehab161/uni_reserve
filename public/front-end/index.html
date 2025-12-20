@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book a Hall</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<nav>
+    <a href="landing.html">Home</a>
+    <a href="index.html">Book Hall</a>
+    <a href="admin.html">Admin</a>s
+</nav>
+
+<header>
+    <h1>Available Halls</h1>
+</header>
+
+<section class="container">
+    <label>Select Date</label>
+    <input type="date" id="filterDate">
+
+    <table>
+        <thead>
+            <tr>
+                <th>Hall</th>
+                <th>Capacity</th>
+                <th>Date</th>
+                <th>Time Slot</th>
+            </tr>
+        </thead>
+        <tbody id="hallTable"></tbody>
+    </table>
+</section>
+
+<section class="container">
+    <h2>Book a Time Slot</h2>
+
+    <form id="bookingForm">
+        <label>College Name</label>
+        <input type="text" required>
+
+        <label>Available Slots</label>
+        <select id="slotSelect"></select>
+
+        <button type="submit">Confirm Booking</button>
+    </form>
+</section>
+
+<footer>
+    <p>© 2025 University Hall Booking System</p>
+</footer>
+
+<script src="assets/script.js"></script>
+</body>
+</html>

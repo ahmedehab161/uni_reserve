@@ -1,0 +1,25 @@
+@extends('maindesign')
+
+@section('index_page')
+    <header class="hero">
+    <h1>University Hall Booking System</h1>
+    <p>Book halls with precise 15-minute time slots</p>
+    <a href="index.html" class="hero-btn">Get Started</a>
+</header>
+
+<section class="container features">
+    <div class="card">
+        <h3>Date Selection</h3>
+        <p>Book halls by selecting a specific date.</p>
+    </div>
+    <div class="card">
+        <h3>15-Min Slots</h3>
+        <p>Modern and accurate time scheduling.</p>
+    </div>
+    <div class="card">
+        <h3>Admin Control</h3>
+        <p>Add halls, dates, and monitor bookings.</p>
+    </div>
+</section>
+
+@endsection
