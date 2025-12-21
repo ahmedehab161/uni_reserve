@@ -9,7 +9,6 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("Hello Admin :)") }}
                     <section class="container admin">
                         <div class="card">
                             <h3>Booked Halls</h3>
@@ -53,7 +52,7 @@
                         <td class="p-2">{{ $r->user->email }}</td>
                         <td class="p-2">{{ $r->hall->hall_name }}</td>
                         <td class="p-2">{{ $r->date }}</td>
-                        <td class="p-2">{{ $r->start_time }} - {{ $r->end_time }}</td>
+                        <td>{{ $r->reserved_from }} - {{ $r->reserved_to }}</td>
                     </tr>
                 @endforeach
             </tbody>

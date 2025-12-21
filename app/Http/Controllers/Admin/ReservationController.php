@@ -20,8 +20,8 @@ class ReservationController extends Controller
                 'User Email',
                 'Hall Name',
                 'Date',
-                'Start Time',
-                'End Time'
+                'Reserved From',
+                'Reserved To'
             ]);
 
             foreach ($reservations as $r) {
@@ -30,8 +30,8 @@ class ReservationController extends Controller
                     $r->user->email,
                     $r->hall->hall_name,
                     $r->date,
-                    $r->start_time,
-                    $r->end_time
+                    $r->reserved_from,
+                    $r->reserved_to
                 ]);
             }
 

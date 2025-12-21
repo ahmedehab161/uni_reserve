@@ -20,14 +20,15 @@ class AdminController extends Controller
 
     public function postAdd_Hall(Request $request){
 
-        $hall = new Hall();
-        $hall->hall_name = $request->hall_name;
-        $hall->hall_capacity = $request->hall_capacity;
-        $hall->date = $request->date;
-        $hall->start_time = $request->start_time;
-        $hall->end_time = $request->end_time;
+        Hall::create([
+            'hall_name'        => $request->hall_name,
+            'hall_capacity'    => $request->hall_capacity,
+            'date'             => $request->date,
+            'start_time'       => $request->start_time,
+            'end_time'         => $request->end_time,
+            'price_per_hour'   => $request->price_per_hour,
+        ]);
 
-        $hall->save();
         return redirect()->back()->with('success', 'Hall added successfully');
     }
 }

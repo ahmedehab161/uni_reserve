@@ -6,16 +6,30 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Hall;
 use App\Models\Reservation;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
     public function Dashboard() {
+        
         if(Auth::check() && Auth::user()->usertype == 'user')
         {
             $availableHalls = Hall::where('booked', false)
+            ->whereDate('date', '>=', now()->toDateString())
             ->orderBy('date')
             ->orderBy('start_time')
             ->get();
+
+            $today = Carbon::today();
+
+            $availableHalls = Hall::all()->map(function ($hall) use ($today) {
+                // If hall date is in the past → reset to today
+                if (Carbon::parse($hall->date)->lt($today)) {
+                    $hall->date = $today;
+                    $hall->save();
+                }
+                return $hall;
+            });
 
             return view('dashboard', compact('availableHalls'));
         }

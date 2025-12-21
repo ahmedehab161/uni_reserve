@@ -23,16 +23,14 @@
                             <label>Date</label>
                             <input type="date" name="date" id="slotDate" required>
 
-                                <label class="block text-sm font-medium">Subject</label>
-                                <input type="text" name="subject"
-                                    class="w-full border rounded px-3 py-2"
-                                    placeholder="Meeting / Training / Event" required>
-
                             <label>Start Time</label>
                             <input type="time" name="start_time" id="startTime" step="900" required>
 
                             <label>End Time</label>
                             <input type="time" name="end_time" id="endTime" step="900" required>
+
+                            <label>Price Per Hour</label>
+                            <input type="number" name="price_per_hour" min="1" required class="w-full border rounded px-2 py-1">
 
                             <input type="submit" name="submit" class="button" value="add hall">
                         </form>

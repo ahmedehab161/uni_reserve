@@ -10,8 +10,10 @@ class Reservation extends Model
         'user_id',
         'hall_id',
         'date',
-        'start_time',
-        'end_time'
+        'reserved_from',
+        'reserved_to',
+        'subject',
+        'total_price',
     ];
 
     public function user()

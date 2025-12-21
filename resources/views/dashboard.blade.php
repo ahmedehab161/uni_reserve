@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Available Halls') }}
         </h2>
     </x-slot>
 
@@ -9,46 +9,68 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("Hello User :)") }}
+
                     <h2 class="text-xl font-bold mb-4">Available Halls</h2>
 
                     @if($availableHalls->count() > 0)
-                    <table class="w-full border">
-                        <thead>
-                            <tr class="bg-gray-800 text-white">
-                                <th>Hall Name</th>
-                                <th>Capacity</th>
-                                <th>Available Date</th>
-                                <th>Time</th>
-                                <th>Want It ?</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($availableHalls as $hall)
-                            <tr>
-                                <td>{{ $hall->hall_name }}</td>
-                                <td>{{ $hall->hall_capacity }}</td>
-                                <td>{{ $hall->date }}</td>
-                                <td>{{ $hall->start_time }} - {{ $hall->end_time }}</td>
-                                <td>
-                                    {{-- <form method="POST" action="{{ route('hall.reserve', $hall->id) }}">
-                                        @csrf
-                                        <button type="submit" class="bg-black text-white px-4 py-1 rounded">
-                                            Reserve
-                                        </button>
-                                    </form> --}}
-                                    <a href="{{ route('hall.payment', $hall->id) }}"
-                                    class="bg-black text-white px-4 py-1 rounded">
-                                        Reserve
-                                    </a>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+
+                        <!-- TABLE WRAPPER (overflow safe) -->
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full border border-gray-300 dark:border-gray-700">
+                                <thead>
+                                    <tr class="bg-gray-800 text-white">
+                                        <th class="px-3 py-2 whitespace-nowrap">Hall Name</th>
+                                        <th class="px-3 py-2 whitespace-nowrap">Capacity</th>
+                                        <th class="px-3 py-2 whitespace-nowrap">Date</th>
+                                        <th class="px-3 py-2 whitespace-nowrap">Available Time</th>
+                                        <th class="px-3 py-2 whitespace-nowrap">Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach($availableHalls as $hall)
+                                        <tr class="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+
+                                            <td class="px-3 py-2 whitespace-nowrap">
+                                                {{ $hall->hall_name }}
+                                            </td>
+
+                                            <td class="px-3 py-2 whitespace-nowrap">
+                                                {{ $hall->hall_capacity }}
+                                            </td>
+
+                                            <td class="px-3 py-2 whitespace-nowrap">
+                                                {{ $hall->date }}
+                                            </td>
+
+                                            <td class="px-3 py-2 whitespace-nowrap">
+                                                {{ $hall->start_time }} - {{ $hall->end_time }}
+                                            </td>
+
+                                            <td class="px-3 py-2 whitespace-nowrap">
+                                                @if($hall->booked)
+                                                    <span class="bg-emerald-600 text-white px-3 py-1 rounded text-sm font-semibold">
+                                                        Fully Booked
+                                                    </span>
+                                                @else
+                                                    <a href="{{ route('hall.payment', $hall->id) }}"
+                                                       class="bg-gray-800 text-white px-4 py-1 rounded
+                                                              hover:bg-emerald-600 transition-colors duration-200">
+                                                        Reserve
+                                                    </a>
+                                                @endif
+                                            </td>
+
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+
                     @else
-                    <p>No available halls at the moment.</p>
+                        <p class="text-gray-500">No available halls at the moment.</p>
                     @endif
+
                 </div>
             </div>
         </div>

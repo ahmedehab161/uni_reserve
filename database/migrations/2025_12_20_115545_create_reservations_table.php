@@ -16,7 +16,6 @@ return new class extends Migration
 
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('hall_id')->constrained()->cascadeOnDelete();
-
             $table->date('date');
             $table->time('start_time');
             $table->time('end_time');
