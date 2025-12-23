@@ -46,15 +46,21 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($reservations as $r)
+                @forelse($reservations as $r)
                     <tr class="border-b text-white">
                         <td class="p-2">{{ $r->user->name }}</td>
                         <td class="p-2">{{ $r->user->email }}</td>
                         <td class="p-2">{{ $r->hall->hall_name }}</td>
                         <td class="p-2">{{ $r->date }}</td>
-                        <td>{{ $r->reserved_from }} - {{ $r->reserved_to }}</td>
+                        <td class="p-2">{{ $r->reserved_from }} - {{ $r->reserved_to }}</td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="5" class="text-center text-gray-400 p-4">
+                            No Reservations Made For Now.
+                        </td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
 

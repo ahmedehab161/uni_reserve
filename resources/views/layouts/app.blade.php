@@ -10,7 +10,8 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" href="front-end/assets/style.css"> 
+        <link rel="stylesheet" href="front-end/assets/style.css">
+        <link rel="icon" type="image/png" href="{{ asset('front-end/img/uni-with-back.png') }}">
         <script src="front-end/assets/script.js"></script>
 
         <!-- Scripts -->

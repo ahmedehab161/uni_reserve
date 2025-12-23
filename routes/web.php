@@ -41,8 +41,8 @@ Route::middleware('auth')->group(function () {
 Route::get('/reservations', [ReservationController::class, 'index']);
 Route::get('/reservations/export', [ReservationController::class, 'exportCsv']);
 
-// Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
-    
-// });
+Route::get('/payment/success', [PaymentController::class, 'success']);
+Route::get('/payment/failure', [PaymentController::class, 'failure']);
+
 
 require __DIR__.'/auth.php';
